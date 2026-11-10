@@ -1,0 +1,45 @@
+/* The word stays still. Only its material responds to the visitor. */
+.material-hero { min-height: calc(100svh - var(--masthead-height)); padding: 28px var(--pad) 30px; display: flex; flex-direction: column; background: var(--paper); color: var(--ink); position: relative; overflow: clip; }
+.material-meta { display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 11px; }
+.material-meta > [lang="en"] { font-size: 10px; letter-spacing: .14em; font-weight: 650; }
+.material-center { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-block: 24px 36px; }
+.material-word-wrap { position: relative; width: 100%; isolation: isolate; touch-action: pan-y; direction: ltr; }
+.material-title { font-size: min(34vw, 54svh, 520px); line-height: 1.18; text-align: center; letter-spacing: -.035em; user-select: none; }
+.material-ready .material-title { color: transparent; }
+.material-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: crosshair; opacity: 0; }
+.material-ready .material-canvas { opacity: 1; }
+.material-invitation { margin-top: 5px; display: flex; justify-content: center; gap: 18px; align-items: center; font-size: 12px; color: var(--muted); }
+.material-invitation > [aria-hidden] { font-size: 21px; color: var(--ink); }
+.material-touch-help { display: none; }
+.material-bottom { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
+.material-choices { display: flex; align-items: center; gap: clamp(18px, 2.8vw, 44px); }
+.material-choices button { display: flex; align-items: baseline; gap: 10px; border: 0; background: none; color: var(--ink); padding: 8px 0; cursor: pointer; font-size: 12px; opacity: .5; }
+.material-choices button > span { font-family: var(--display); font-size: 24px; line-height: 1; }
+.material-choices button[aria-pressed="true"], .material-choices button:hover { opacity: 1; }
+.material-choices button[aria-pressed="true"] { text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 1px; }
+.material-menu-link { font-size: 12px; display: inline-flex; align-items: center; gap: 22px; white-space: nowrap; }
+.material-menu-link > span { font-size: 24px; }
+@media (max-width:680px) {
+  .material-hero { padding-top: 22px; padding-bottom: 24px; }
+  .material-meta { font-size: 10px; gap: 10px; }
+  .material-meta > [lang="en"] { font-size: 8px; letter-spacing: .07em; }
+  .material-center { padding-block: 28px 60px; }
+  .material-invitation { margin-top: 20px; font-size: 11px; }
+  .material-bottom { gap: 16px; }
+  .material-choices { gap: 24px; }
+  .material-choices button { gap: 6px; font-size: 11px; }
+  .material-choices button > span { font-size: 20px; }
+  .material-menu-link { font-size: 11px; gap: 12px; }
+}
+@media (hover:none) {
+  .material-touch-help { display: inline; }
+  .material-mouse-help { display: none; }
+}
+
+/* Five material choices stay visible; no carousel or auto-advancing slides. */
+@media (max-width:900px) {
+  .material-bottom { flex-direction: column; align-items: stretch; gap: 22px; }
+  .material-choices { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 8px; }
+  .material-choices button { flex-direction: column; align-items: center; gap: 9px; white-space: nowrap; font-size: 11px; }
+  .material-menu-link { align-self: flex-start; }
+}
